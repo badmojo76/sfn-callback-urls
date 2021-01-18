@@ -47,7 +47,7 @@ from sfn_callback_urls.schemas.create_urls import create_urls_input_schema
 BOTO3_SESSION = boto3.Session()
 MASTER_KEY_PROVIDER = None
 if 'KEY_ID' in os.environ:
-    MASTER_KEY_PROVIDER = aws_encryption_sdk.KMSMasterKeyProvider(
+    MASTER_KEY_PROVIDER = aws_encryption_sdk.StrictAwsKmsMasterKeyProvider(
         key_ids = [os.environ['KEY_ID']],
         botocore_session = BOTO3_SESSION._session
     )

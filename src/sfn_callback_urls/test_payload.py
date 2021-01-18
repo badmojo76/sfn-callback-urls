@@ -205,7 +205,7 @@ def test_encrypted_payload_coding():
     key_id = os.environ['KEY_ID']
     session = boto3.Session()
     
-    mkp = aws_encryption_sdk.KMSMasterKeyProvider(
+    mkp = aws_encryption_sdk.StrictAwsKmsMasterKeyProvider(
         key_ids = [key_id],
         botocore_session = session._session
     )
